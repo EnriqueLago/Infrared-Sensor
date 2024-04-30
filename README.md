@@ -27,5 +27,7 @@ The sensor is controlled via nats menssages protocol:
 3. exit: Exits the nats server
 
 ### Example
+```
 # Starting de sensor:
-`nats pub sensor_instructions start`
+nats pub sensor_instructions start
+```
