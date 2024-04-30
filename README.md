@@ -9,8 +9,11 @@ The installation, running and deployment of [Nats-server & nats-cli](https://git
 
 ## Configuration
 `# Start a new server in the default port`
+
 `nats-server`
+
 `# For a Debug&Trace mode`
+
 `nats-server -DV`
 
 ## Basic usage
