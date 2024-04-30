@@ -20,8 +20,8 @@ The sensor is controlled via nats menssages protocol:
 
 `nats pub <target_name> <message>`
 
-- The name of the automatically generate target: **sensor_instructions**
-* The sensor supports three message as instructions: **start**, **stop** and **exit**
+- The <target_name> is automatically generate: **sensor_instructions**
+* The sensor supports three <message> as instructions: **start**, **stop** and **exit**
 1. start: Starts the sensor and therefore, the data display
 2. stop: Stops the data display and waits
 3. exit: Exits the nats server
