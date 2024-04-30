@@ -8,10 +8,10 @@ The installation, running and deployment of [Nats-server & nats-cli](https://git
 `git clone https://github.com/EnriqueLago/Infrared-Sensor.git`
 
 ## Configuration
-`# Start a new server in the default port 
-nats-server`
-`# For a Debug&Trace mode
-nats-server -DV`
+`# Start a new server in the default port`
+`nats-server`
+`# For a Debug&Trace mode`
+`nats-server -DV`
 
 ## Basic usage
 The sensor is controlled via nats menssages protocol: 
@@ -24,4 +24,4 @@ The sensor is controlled via nats menssages protocol:
 
 ### Example
 # Starting de sensor:
-nats pub sensor_instructions start
+`nats pub sensor_instructions start`
