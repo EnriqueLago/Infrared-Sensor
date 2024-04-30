@@ -28,6 +28,6 @@ The sensor is controlled via nats menssages protocol:
 
 ### Example
 ```
-# Starting de sensor:
+# Starting the sensor:
 nats pub sensor_instructions start
 ```
