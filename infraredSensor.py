@@ -17,9 +17,9 @@ def generate_sensor_data(min_value, max_value):
         data.append(datum)
     return data
 
-# Función que modifica la variable global
+# Function that modifies the global variable that keep running the application
 def modify_global_variable():
-    global continue_program  # Declaración global solo necesaria una vez en la función
+    global continue_program  
     continue_program = False
 
 # Displays the values of the sensor on the screen with decorative border
@@ -28,31 +28,34 @@ def display_data(data):
     terminal_width = os.get_terminal_size().columns
     border = "#" + "-" * (terminal_width - 2) + "#"
     print(border)
-    print(f"   [Datos: {{{data_str}}}]\n{border}")
+    print(f"   [Data: {{{data_str}}}]\n{border}")
 
 # -------------------------MAIN CODE--------------------------#
 async def main(args):
     #--------------------EVENT HANDLERS-----------------------#
-    # Handles the incoming start/stop/exit message and starts/stops/displaying data or exits accordingly
+    # Handles the incoming start/stop/exit messages 
     async def handle_instructions(msg):
         nonlocal display_data_flag
         instruction = msg.data.decode()
         
-        if instruction == "start":
+        # Starts displaying data
+        if instruction == "start":  
             logging.info("Received start instruction")
             display_data_flag = True
             display_event.set()  # Set the event to start displaying data
         
-        elif instruction == "stop":
+        # Stops displaying data
+        elif instruction == "stop":  
             logging.info("Received stop instruction")
-            if display_data_flag:  # Solo permite "stop" si ya está en curso "start"
+            if display_data_flag:  # Only allows "stop" if "start" is already in progress
                 display_data_flag = False
                 display_event.clear()  # Clear the event to stop displaying data
                 print("Waiting for instructions...")
             else:
                 print("Cannot stop. Start command has not been received.")
         
-        elif instruction == "exit": #The nats connection stop
+        # If confirmation, the NATS connection and application will stop 
+        elif instruction == "exit": 
             logging.info("Received exit instruction")
             display_data_flag = False
             display_event.clear()
