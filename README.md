@@ -19,6 +19,9 @@ nats-server -DV
 ```
 #To execute the program, run the following command:
 python infraredSensor.py --sensor-type <sensor_type> --reading-frequency <reading_frequency> --min-value <min_value> --max-value <max_value>
+
+#For more information:
+python infraredSensor.py --help
 ```
 **Note:** with the `real` sensor, the `min_value` and `max_value` values cannot be configured.
 Arguments:
@@ -43,3 +46,4 @@ The sensor is controlled via nats menssages protocol:
 # Starting the sensor:
 nats pub sensor_instructions start
 ```
+![recording-2024-05-01-23-54-55-_online-video-cutter com_](https://github.com/EnriqueLago/Infrared-Sensor/assets/168533662/c58781db-8575-4862-871a-f072777becf7)

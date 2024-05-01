@@ -64,6 +64,7 @@ async def main(args):
                     print("Please enter Y or N.")
             if user_input == "n":
                 modify_global_variable()
+                logging.info("Exit of the program confirmed")
                 return
             print("Waiting for instructions...")
             
@@ -109,6 +110,7 @@ async def main(args):
     # Connect to NATS server asynchronously
     try:
         nc = await asyncio.wait_for(nats.connect(), timeout=10) # Connects to de default port nats://localhost:4222
+        logging.info("Connection to NATS server (nats://localhost:4222) succesful")
     except ConnectionClosedError:
         print("Connection to NATS server refused. Please make sure the server is running and reachable.")
         sys.exit()
@@ -168,5 +170,12 @@ if __name__ == "__main__":
     # Configure the output of logs to the "sensor_log.log" file inside the "logs" folder
     log_file = os.path.join(logs_dir, 'sensor_log.log')
     logging.basicConfig(filename=log_file, level=logging.INFO)
+    
+    # Record the values of the arguments provided by the user in the log file for reference.
+    logging.info("New program execution. User provided arguments:")
+    logging.info(f"Sensor type: {args.sensor_type}")
+    logging.info(f"Reading frequency: {args.reading_frequency}")
+    logging.info(f"Minimum value: {args.min_value}")
+    logging.info(f"Maximum value: {args.max_value}")
     
     asyncio.run(main(args))
